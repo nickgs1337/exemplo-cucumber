@@ -7,6 +7,9 @@ import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.junit.Assert;
 
+import java.util.List;
+import java.util.Map;
+
 public class LoginStepDefinitions {
     private Login login;
 
@@ -33,5 +36,14 @@ public class LoginStepDefinitions {
     @Entao("meu login não é válido")
     public void meu_login_nao_e_valido(){
         Assert.assertFalse(this.login.estaValido());
+    }
+
+    @Dado("que os logins são inválidos:")
+    public void que_os_logins_sao_invalidos(List<Map<String, String>> logins) {
+        for (Map<String, String> x : logins) {
+            System.out.println("login " + x.get("usuario")
+                    + " " + x.get("senha"));
+        }
+
     }
 }
